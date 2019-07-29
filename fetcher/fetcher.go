@@ -13,11 +13,25 @@ import (
 )
 
 func Fetch(url string) ([] byte,error){
-	resp, err := http.Get(url)
+	client := &http.Client{}
+	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
-		return nil,err
+		log.Fatalln(err)
 	}
+	req.Header.Set("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36")
+
+	resp, err := client.Do(req)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
 	defer resp.Body.Close()
+
+	//resp, err := http.Get(url)
+	//if err != nil {
+	//	return nil,err
+	//}
+	//defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
 		return nil,fmt.Errorf("wrong status code: %d",resp.StatusCode)

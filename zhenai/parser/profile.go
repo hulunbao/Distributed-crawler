@@ -20,8 +20,9 @@ var hokouRe = regexp.MustCompile(`<div class="m-btn purple" data-v-bff6f798="">�
 var houseRe = regexp.MustCompile(`<div class="m-btn pink" data-v-bff6f798="">(.+房)</div>`)
 var carRe = regexp.MustCompile(`<div class="m-btn pink" data-v-bff6f798="">(.+车)</div>`)
 
-func ParseProfile(contents []byte) engine.ParserResult {
+func ParseProfile(contents []byte,name string) engine.ParserResult {
 	profile := model.Profile{}
+	profile.Name = name
 	age, err := strconv.Atoi(extractString(contents,ageRe))
 	if err == nil {
 		profile.Age = age
