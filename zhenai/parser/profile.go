@@ -7,7 +7,7 @@ import (
 	"strconv"
 )
 
-var ageRe = regexp.MustCompile(`<div class="m-btn purple" data-v-bff6f798="">([\d]+)岁</div>`)
+var ageRe = regexp.MustCompile(`<div class="m-btn purple" data-v-bff6f798="">([\d]+岁)</div>`)
 var heightRe = regexp.MustCompile(`<div class="m-btn purple" data-v-bff6f798="">([^<]+)cm</div>`)
 var weightRe = regexp.MustCompile(`<div class="m-btn purple" data-v-bff6f798="">([^<]+)kg</div>`)
 var incomeRe = regexp.MustCompile(`<div class="m-btn purple" data-v-bff6f798="">月收入:([^<]+)</div>`)
