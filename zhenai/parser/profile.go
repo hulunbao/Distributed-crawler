@@ -3,6 +3,7 @@ package parser
 import (
 	"Distributed-crawler/engine"
 	"Distributed-crawler/model"
+	"fmt"
 	"regexp"
 	"strconv"
 )
@@ -20,15 +21,16 @@ var hokouRe = regexp.MustCompile(`<div class="m-btn purple" data-v-bff6f798="">�
 var houseRe = regexp.MustCompile(`<div class="m-btn pink" data-v-bff6f798="">(.+房)</div>`)
 var carRe = regexp.MustCompile(`<div class="m-btn pink" data-v-bff6f798="">(.+车)</div>`)
 
-func ParseProfile(contents []byte,name string) engine.ParserResult {
+func ParseProfile(contents []byte, name string) engine.ParserResult {
 	profile := model.Profile{}
+
 	profile.Name = name
-	age, err := strconv.Atoi(extractString(contents,ageRe))
+	age, err := strconv.Atoi(extractString(contents, ageRe))
 	if err == nil {
 		profile.Age = age
 	}
 
-	profile.Marriage = extractString(contents,marriageRe)
+	profile.Marriage = extractString(contents, marriageRe)
 
 	height, err := strconv.Atoi(extractString(contents, heightRe))
 	if err == nil {
@@ -57,11 +59,12 @@ func ParseProfile(contents []byte,name string) engine.ParserResult {
 
 }
 
-func extractString(contents []byte,re *regexp.Regexp) string {
+func extractString(contents []byte, re *regexp.Regexp) string {
 	match := re.FindSubmatch(contents)
+	fmt.Println(match)
 	if len(match) >= 2 {
 		return string(match[1])
-	}else {
+	} else {
 		return ""
 	}
 }
