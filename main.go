@@ -1,8 +1,8 @@
 package main
 
 import (
-	"golang/learngo/crawler/engine"
-	"golang/learngo/crawler/zhenai/parser"
+	"Distributed-crawler/engine"
+	"Distributed-crawler/zhenai/parser"
 )
 
 func main() {
