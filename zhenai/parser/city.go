@@ -7,6 +7,7 @@ import (
 
 var cityRe = regexp.MustCompile(`<a href="(http://album.zhenai.com/u/[0-9]+)".+?alt=([^>]+)></a>`)
 
+// ParseCity 爬取城市对应的用户列表
 func ParseCity(contents []byte) engine.ParserResult {
 	matches := cityRe.FindAllSubmatch(contents, -1)
 

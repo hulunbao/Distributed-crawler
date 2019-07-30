@@ -21,6 +21,7 @@ var hokouRe = regexp.MustCompile(`<div class="m-btn purple" data-v-bff6f798="">�
 var houseRe = regexp.MustCompile(`<div class="m-btn pink" data-v-bff6f798="">(.+房)</div>`)
 var carRe = regexp.MustCompile(`<div class="m-btn pink" data-v-bff6f798="">(.+车)</div>`)
 
+// ParseProfile 爬取个人信息
 func ParseProfile(contents []byte, name string) engine.ParserResult {
 	profile := model.Profile{}
 
@@ -62,9 +63,9 @@ func ParseProfile(contents []byte, name string) engine.ParserResult {
 func extractString(contents []byte, re *regexp.Regexp) string {
 	match := re.FindSubmatch(contents)
 	fmt.Println(match)
+	fmt.Println(len(match))
 	if len(match) >= 2 {
 		return string(match[1])
-	} else {
-		return ""
 	}
+	return ""
 }
