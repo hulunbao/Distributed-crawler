@@ -8,10 +8,10 @@ import (
 var cityListRe = regexp.MustCompile(`<a href="(http://www.zhenai.com/zhenghun/[0-9a-z]+)"[^>]*>([^<]+)</a>`)
 
 // ParseCityList 爬取城市列表
-func ParseCityList(contents []byte) engine.ParserResult {
+func ParseCityList(contents []byte) engine.ParseResult {
 	matches := cityListRe.FindAllSubmatch(contents, -1)
 
-	result := engine.ParserResult{}
+	result := engine.ParseResult{}
 	for _, m := range matches {
 		result.Items = append(result.Items, "City "+string(m[2]))
 		result.Requests = append(result.Requests, engine.Request{

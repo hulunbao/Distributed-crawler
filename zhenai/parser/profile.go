@@ -21,7 +21,7 @@ var houseRe = regexp.MustCompile(`<div class="m-btn pink" data-v-bff6f798>(已�
 var carRe = regexp.MustCompile(`<div class="m-btn pink" data-v-bff6f798>(已买车|未买车)</div>`)
 
 // ParseProfile 爬取个人信息
-func ParseProfile(contents []byte, name string) engine.ParserResult {
+func ParseProfile(contents []byte, name string) engine.ParseResult {
 	profile := model.Profile{}
 
 	profile.Name = name
@@ -52,7 +52,7 @@ func ParseProfile(contents []byte, name string) engine.ParserResult {
 	profile.House = extractString(contents, houseRe)
 	profile.Car = extractString(contents, carRe)
 
-	result := engine.ParserResult{
+	result := engine.ParseResult{
 		Items: []interface{}{profile},
 	}
 	return result
