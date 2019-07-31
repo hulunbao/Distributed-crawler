@@ -5,7 +5,7 @@ import (
 	"regexp"
 )
 
-var cityRe = regexp.MustCompile(`<a href="(http://album.zhenai.com/u/[0-9]+)".+?alt=([^>]+)></a>`)
+var cityRe = regexp.MustCompile(`<a href="(http://album.zhenai.com/u/[0-9]+)" target="_blank"><img src=.*?alt=([^>]+)></a>`)
 
 // ParseCity 爬取城市对应的用户列表
 func ParseCity(contents []byte) engine.ParserResult {
