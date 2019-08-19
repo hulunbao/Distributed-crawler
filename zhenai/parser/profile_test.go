@@ -1,9 +1,10 @@
 package parser
 
 import (
-	"Distributed-crawler/model"
 	"io/ioutil"
 	"testing"
+
+	"github.com/hulunbao/Distributed-crawler/model"
 )
 
 func TestParseProfile(t *testing.T) {

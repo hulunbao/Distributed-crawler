@@ -1,10 +1,12 @@
 package parser
 
 import (
-	"Distributed-crawler/engine"
-	"Distributed-crawler/model"
 	"regexp"
 	"strconv"
+
+	"github.com/hulunbao/Distributed-crawler/engine"
+
+	"github.com/hulunbao/Distributed-crawler/model"
 )
 
 var ageRe = regexp.MustCompile(`<div class="m-btn purple" data-v-bff6f798>([0-9]+)[^<]+</div>`)

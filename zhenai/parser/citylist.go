@@ -1,8 +1,9 @@
 package parser
 
 import (
-	"Distributed-crawler/engine"
 	"regexp"
+
+	"github.com/hulunbao/Distributed-crawler/engine"
 )
 
 var cityListRe = regexp.MustCompile(`<a href="(http://www.zhenai.com/zhenghun/[0-9a-z]+)"[^>]*>([^<]+)</a>`)

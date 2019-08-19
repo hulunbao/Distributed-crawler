@@ -1,8 +1,9 @@
 package parser
 
 import (
-	"Distributed-crawler/engine"
 	"regexp"
+
+	"github.com/hulunbao/Distributed-crawler/engine"
 )
 
 var cityRe = regexp.MustCompile(`<a href="(http://album.zhenai.com/u/[0-9]+)" target="_blank"><img src=.*?alt=([^>]+)></a>`)

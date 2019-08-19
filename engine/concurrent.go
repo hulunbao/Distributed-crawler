@@ -28,23 +28,23 @@ func (e ConcurrentEngine) Run(seeds ...Request) {
 	for {
 		result := <-out
 		for _, item := range result.Items {
-			fmt.Println("Got item: %v", item)
+			fmt.Printf("Got item: %v", item)
 		}
-		for _, request := range result.Request {
+		for _, request := range result.Requests {
 			e.Scheduler.Submit(request)
 		}
 	}
 }
 
-func createWorker(in chan Request,out chan ParseResult){
-	go func ()  {
-		for{
-			request := <- in
+func createWorker(in chan Request, out chan ParseResult) {
+	go func() {
+		for {
+			request := <-in
 			result, err := worker(request)
 			if err != nil {
 				continue
 			}
 			out <- result
 		}
-	}
+	}()
 }

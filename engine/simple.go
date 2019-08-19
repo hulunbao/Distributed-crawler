@@ -1,8 +1,9 @@
 package engine
 
 import (
-	"Distributed-crawler/fetcher"
 	"log"
+
+	"github.com/hulunbao/Distributed-crawler/fetcher"
 )
 
 type SimpleEngine struct{}
