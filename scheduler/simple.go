@@ -1,8 +1,6 @@
 package scheduler
 
-import (
-	"golang/learngo/crawler/engine"
-)
+import "github.com/hulunbao/golang/learngo/crawler/engine"
 
 type SimpleScheduler struct {
 	workerChan chan engine.Request
