@@ -12,7 +12,7 @@ type ConcurrentEngine struct {
 type Scheduler interface {
 	Submit(Request)
 	ConfigureMasterWorkerChan(chan Request)
-	WorderReady(chan Request)
+	WorkerReady(chan Request)
 	Run()
 }
 
@@ -45,7 +45,8 @@ func createWorker(out chan ParseResult, s Scheduler) {
 	in := make(chan Request)
 	go func() {
 		for {
-			s.WorderReady(in)
+			s.WorkerReady(in)
+			request := <-in
 			result, err := worker(request)
 			if err != nil {
 				continue

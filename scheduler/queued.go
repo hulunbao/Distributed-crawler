@@ -18,10 +18,10 @@ func (s *QueuedScheduler) WorkerReady(w chan engine.Request) {
 }
 
 func (s *QueuedScheduler) ConfigureMasterWorkerChan(c chan engine.Request) {
-	s.workerChan = c
+	panic("implement me")
 }
 
-func (s QueuedScheduler) Run() {
+func (s *QueuedScheduler) Run() {
 	s.workerChan = make(chan chan engine.Request)
 	s.requestChan = make(chan engine.Request)
 	go func() {
@@ -38,7 +38,7 @@ func (s QueuedScheduler) Run() {
 			case r := <-s.requestChan:
 				requestQ = append(requestQ, r)
 			case w := <-s.workerChan:
-				workerQ = append(workerQ, W)
+				workerQ = append(workerQ, w)
 			case activeWorker <- activeRequest:
 				requestQ = requestQ[1:]
 				workerQ = workerQ[1:]
