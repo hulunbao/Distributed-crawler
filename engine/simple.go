@@ -6,6 +6,7 @@ import (
 	"github.com/hulunbao/Distributed-crawler/fetcher"
 )
 
+// SimpleEngine 单任务引擎
 type SimpleEngine struct{}
 
 // Run 系统引擎部分
