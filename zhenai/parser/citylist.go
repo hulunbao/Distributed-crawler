@@ -8,6 +8,8 @@ import (
 
 var cityListRe = regexp.MustCompile(`<a href="(http://www.zhenai.com/zhenghun/[0-9a-z]+)"[^>]*>([^<]+)</a>`)
 
+//var genderRe = regexp.MustCompile(``)
+
 // ParseCityList 爬取城市列表
 func ParseCityList(contents []byte) engine.ParseResult {
 	matches := cityListRe.FindAllSubmatch(contents, -1)
